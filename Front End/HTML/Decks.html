@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <title>Flash It! Home Page</title>
+    <style>
+        a {
+            text-decoration: none;
+            color: black;
+        }
+
+        a:hover {
+            color: white;
+        }
+
+        body {
+            margin-left: 400px;
+            margin-right: 550px;
+            background-color: #D9D9D9;
+        }
+
+        .card {
+            box-shadow: 0 16px 16px 0 rgba(0, 0, 0, 0.2);
+            transition: 0.3s;
+            width: 130%;
+            border-radius: 50px;
+            top: 60px;
+            color: white;
+            background-color: #353535;
+            text-align: center;
+            padding: 30px 0;
+        }
+
+        .card:hover {
+            box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.2);
+        }
+
+        .container {
+            padding: 2px 16px;
+        }
+
+
+        .bx {
+            background-color: #284B63;
+            border-radius: 15px;
+            box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.2);
+            transition: 0.3s;
+            width: 90%;
+            top: 100px;
+            bottom: 100px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: auto;
+            text-align: centre;
+        }
+
+        .card:hover {
+            box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.2);
+        }
+
+        .box2 {
+            padding: 2px 16px;
+
+        }
+
+        .container {
+            padding: 2px 16px;
+        }
+
+        .btn-primary {
+            color: black;
+            background-color: #D9D9D9;
+            border-color: #D9D9D9;
+            border-radius: 4px;
+            border-width: 2px;
+            font-family: "Garamond";
+            font-family: 'Times new roman';
+        }
+
+        .btn-primary:hover {
+            color: white;
+            background-color: #969090;
+            border-color: #969090;
+            box-shadow: 0 4px 16px 0 rgb(51, 49, 49);
+        }
+
+        .cont {
+            height: 40px;
+            position: relative;
+        }
+
+        .centre {
+            margin: 0;
+            position: absolute;
+            top: 50%;
+            left: 87%;
+            -ms-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+        }
+
+        .list-group{
+            max-height: 300px;
+            overflow-y:auto;
+        }
+        .list-group-mine .list-group-item {
+          
+            background-color: #ffff;
+            font-family: 'Times new roman';
+            color:black !important;
+        }
+
+        .list-group-mine .list-group-item:hover {
+          text-decoration: none;
+            background-color: #4e7996;
+            font-family: 'Times new roman';
+            color: white !important;
+        }
+        .list-group-mine .list-group-item .a:hover{
+           text-decoration: none;
+          color: white !important;
+        }
+
+        .title {
+            font-size: 35px;
+            font-family: 'Garamond';
+            text-align: center;
+        }
+
+        .text {
+            font-size: 20px;
+            font-family: 'Times new roman';
+            text-align: center;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="card">
+
+        <div class="cont">
+            <div class="centre">
+                <a href="/logout">
+                    <button class="btn btn-primary">
+                        Log out!
+                    </button>
+                </a>
+            </div>
+        </div>
+
+        <div class="title">
+            Hello {{USER.disp_name}},Welcome to Flash It!
+            <br>
+        </div>
+
+        <div class="container">
+            <div class="bx">
+                <a href="{{url_for('newDeck')}}">
+                  <br>
+                    <button class="btn btn-primary">
+                        Create a new Deck!
+                    </button>
+                  
+                </a>
+
+                <div class="text">
+                  <br>
+                    Your Decks:
+                </div>
+                
+                <div class="box2">
+                  <br>
+                    <ul class = "list-group">
+                    <ul class="list-group list-group-mine">
+                        {% for deck in USER.decks %}
+
+                        <li class="list-group-item">
+                            <a href="decks/{{deck.deck_id}}">
+                                {{deck.deck_name}}
+                            </a>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                    </ul>
+                    <br>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+
